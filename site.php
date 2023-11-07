@@ -35,11 +35,11 @@ if ($usuario->logar($email,$senha)){
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet" /> 
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css" /> <!-- importa o css-->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 
@@ -50,7 +50,7 @@ if ($usuario->logar($email,$senha)){
     <header>
 
       <nav class="header-content container">
-        <div class="header-icons" data-aos="fade-down">
+        <div class="header-icons" data-aos="fade-down"> 
           <a href="https://instagram.com/zoocuritiba?igshid=MWZjMTM2ODFkZg==">
            <i class="fa-brands fa-instagram fa-2x"></i>   
           </a>
@@ -151,6 +151,88 @@ O Parque é cortado pelo rio Iguaçu que forma campos inundados
 
   <!-- FOOTER -->
 
+  <section class="about">
+    <div class="container about-content">
+      <div data-aos="zoom-in" data-aos-delay="100">
+        <img 
+          src="img/pintada.jpg" 
+          alt="Animais do Zoo"
+        />
+      </div>
+
+      <div 
+        class="about-description"
+        data-aos="zoom-out-left" data-aos-delay="250"
+      >
+        <h2>Mosaico na entrada: onça-pintada</h2>
+        <p>Logo na sua entrada há um lindo mosaico de uma onça-pintada, ameaçada de extinção no Brasil. A obra de arte lembra os visitantes sobre a importância das ações de proteção ambiental.(A imagem é ilustrativa, o mosaico não está disponivel na internet).</p>
+        
+      </div>
+
+    </div>
+  </section>
+
+  <div data-aos="fade-down">
+          <a class="header" href="#">
+
+            
+          </a>
+        </div>
+
+      </nav>
+
+      <main class="hero container" data-aos="fade-up" data-aos-delay="400">
+        <h1>Aviso aos nossos visitantes.</h1>
+        <p>O uso da máscara em ambientes fechados é recomendado para quem apresente sintomas de doença respiratória - febre, coriza e tosse. Recomendado também o uso do álcool em gel, para higienização frequente das mãos. Levar sua garrafa de água.
+       Orientações sobre as visitas: </p>
+        <a 
+          href="https://156.curitiba.pr.gov.br/"
+          class="button-contact" 
+          target="_blank"
+        
+        >
+       Chat Online (156) ;
+         
+        </a>
+
+        <a 
+          href="mailto:zoo@curitiba.pr.gov.br"
+          class="button-contact" 
+          target="_blank"
+        
+        >
+       Nos envie um Email ;
+         
+        </a>
+
+      </main>
+
+    </header>
+
+  </div>
+
+  <main class="hero container3" data-aos="fade-up" data-aos-delay="400">
+      <h1>"Desafie sua mente com nosso incrível jogo da memória! Exercite suas habilidades de memorização e divirta-se enquanto combina pares de cartas. Venha testar sua concentração e raciocínio com um toque de diversão!"</h1>
+
+        <a 
+          href="game/index.html"
+          class="button-contact" 
+          target="_blank"
+          >
+       Jogue nosso Game!!😉
+         
+        </a>
+        
+</main>
+
+
+
+
+
+
+
+
+
   <div class="services">
     <h2>Venha conhecer</h2>
     <p id="cphMasterPortal_pEndereco">
@@ -158,8 +240,7 @@ O Parque é cortado pelo rio Iguaçu que forma campos inundados
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7198.778953686178!2d-49.2343419!3d-25.55870595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dcf98f2f7c9d91%3A0x2918348a71cd9422!2sRua%20Jo%C3%A3o%20Miqueletto%2C%201500%20-%20Alto%20Boqueir%C3%A3o%2C%20Curitiba%20-%20PR%2C%2081860-270!5e0!3m2!1spt-BR!2sbr!4v1695338070997!5m2!1spt-BR!2sbr"  width="1000" height="500" style="border:0;" _blank>Abrir no Google Maps<span class="icon-linkDireto"></span></a> allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 					</p>
-
-    
+					
   </div>
 
   

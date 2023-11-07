@@ -36,7 +36,7 @@ body {
 form {
     background: rgba(255, 255, 255, 0.5);
     max-width: 500px;
-    height: 450px;
+    height: 400px;
     padding: 40px;
     border-radius: 20px;
 }
