@@ -1,29 +1,12 @@
 <?php
 session_start();
 
-require_once('classes/Usuario.php');
- require_once('database/conexao.php');
-
-
-$database = new Conexao();
-$db = $database->getConnection();
-$user = new Usuario($db);
-
-if(isset($_POST['logar'])){
-    $usuario = $_POST['usuario'];
-    $senha = $_POST['senha'];
-
-if ($usuario->logar($email,$senha)){
-    $_SESSION['email'] = $email;
-    header("Location: login.php");
+if(!isset($_SESSION['email'])){
+    header ("Location: index.php");
     exit();
-}else{
-    print "<script>alert('Login invalido')</script>";
 }
 
-}
-
-
+$email = $_SESSION['email'];
 ?>
 
 <!DOCTYPE html>
@@ -44,24 +27,16 @@ if ($usuario->logar($email,$senha)){
 
 
   <title>Zoo Curitiba</title>
+
+  <link rel="icon" href="../test/img/icon.png" crossorigin />
+
 </head>
 <body>
   <div class="bg-home">
     <header>
 
       <nav class="header-content container">
-        <div class="header-icons" data-aos="fade-down"> 
-          <a href="https://instagram.com/zoocuritiba?igshid=MWZjMTM2ODFkZg==">
-           <i class="fa-brands fa-instagram fa-2x"></i>   
-          </a>
-          <a href="https://www.facebook.com/PrefsCuritiba/">
-            <i class="fa-brands fa-facebook fa-2x"></i>   
-          </a>
-          <a href="https://www.tiktok.com/@prefscuritiba">
-            <i class="fa-brands fa-tiktok fa-2x"></i>   
-          </a>
-        </div>
-
+       
         <div class="header-logo" data-aos="fade-up" data-aos-delay="300">
           <img 
             data-aos="flip-up"
@@ -72,6 +47,8 @@ if ($usuario->logar($email,$senha)){
           />
           
         </div>
+        <main class="hero container" data-aos="fade-up" data-aos-delay="400">
+        <h2 class="titulo" >BEM-VINDO AO NOSSO <span> ZOOLÓGICO DE CURITIBA </span> <?php echo $email; ?></h2>
 
         <div data-aos="fade-down">
           <a class="header" href="#">
@@ -80,10 +57,12 @@ if ($usuario->logar($email,$senha)){
           </a>
         </div>
 
+        
+
       </nav>
 
       <main class="hero container" data-aos="fade-up" data-aos-delay="400">
-        <h1>Conheça um pouco sobre o Mundo Animal.</h1>
+      <h2 class="titulo" >CONHEÇA UM POUCO SOBRE O <span> MUNDO ANIMAL</span></h2>
         <p>Funcionamento de Terça á Domingo: <strong>10:00</strong> ás <strong>16:00</strong></p>
         <a 
           href="https://instagram.com/zoocuritiba?igshid=MWZjMTM2ODFkZg==" 
@@ -149,40 +128,12 @@ O Parque é cortado pelo rio Iguaçu que forma campos inundados
             </div>
         </div>
 
-  <!-- FOOTER -->
-
-  <section class="about">
-    <div class="container about-content">
-      <div data-aos="zoom-in" data-aos-delay="100">
-        <img 
-          src="img/pintada.jpg" 
-          alt="Animais do Zoo"
-        />
-      </div>
-
-      <div 
-        class="about-description"
-        data-aos="zoom-out-left" data-aos-delay="250"
-      >
-        <h2>Mosaico na entrada: onça-pintada</h2>
-        <p>Logo na sua entrada há um lindo mosaico de uma onça-pintada, ameaçada de extinção no Brasil. A obra de arte lembra os visitantes sobre a importância das ações de proteção ambiental.(A imagem é ilustrativa, o mosaico não está disponivel na internet).</p>
+ 
         
-      </div>
-
-    </div>
-  </section>
-
-  <div data-aos="fade-down">
-          <a class="header" href="#">
-
-            
-          </a>
-        </div>
-
       </nav>
 
       <main class="hero container" data-aos="fade-up" data-aos-delay="400">
-        <h1>Aviso aos nossos visitantes.</h1>
+      <h2 class="titulo" >AVISO AOS NOSSOS <span>VISITANTES</span></h2>
         <p>O uso da máscara em ambientes fechados é recomendado para quem apresente sintomas de doença respiratória - febre, coriza e tosse. Recomendado também o uso do álcool em gel, para higienização frequente das mãos. Levar sua garrafa de água.
        Orientações sobre as visitas: </p>
         <a 
@@ -205,69 +156,223 @@ O Parque é cortado pelo rio Iguaçu que forma campos inundados
          
         </a>
 
+       
+        <div data-aos="fade-down">
+          <a class="header" href="#">
+
+            
+          </a>
+        </div>
+
+
       </main>
 
     </header>
 
   </div>
 
-  <main class="hero container3" data-aos="fade-up" data-aos-delay="400">
-      <h1>"Desafie sua mente com nosso incrível jogo da memória! Exercite suas habilidades de memorização e divirta-se enquanto combina pares de cartas. Venha testar sua concentração e raciocínio com um toque de diversão!"</h1>
 
-        <a 
-          href="game/index.html"
-          class="button-contact" 
-          target="_blank"
-          >
-       Jogue nosso Game!!😉
-         
-        </a>
-        
-</main>
-
-
-
-
-
-
-
-
-
-  <div class="services">
-    <h2>Venha conhecer</h2>
-    <p id="cphMasterPortal_pEndereco">
-						<a id="cphMasterPortal_hlkEnderecoGoogle" class="linkExterno" href="https://www.google.com/maps/search/?api=1&amp;query=R.+JO%c3%83O+MIQUELETTO%2c+1500+Alto+Boqueir%c3%a3o%2c+Curitiba+-+PR">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7198.778953686178!2d-49.2343419!3d-25.55870595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dcf98f2f7c9d91%3A0x2918348a71cd9422!2sRua%20Jo%C3%A3o%20Miqueletto%2C%201500%20-%20Alto%20Boqueir%C3%A3o%2C%20Curitiba%20-%20PR%2C%2081860-270!5e0!3m2!1spt-BR!2sbr!4v1695338070997!5m2!1spt-BR!2sbr"  width="1000" height="500" style="border:0;" _blank>Abrir no Google Maps<span class="icon-linkDireto"></span></a> allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-					</p>
-					
-  </div>
-
-  
-  <footer class="footer">
-    <div class="footer-icons">
-      <a href="https://instagram.com/zoocuritiba?igshid=MWZjMTM2ODFkZg==">
-        <i class="fa-brands fa-instagram fa-2x"></i>   
-       </a>
-       <a href="https://www.facebook.com/PrefsCuritiba/">
-            <i class="fa-brands fa-facebook fa-2x"></i>   
-          </a>
-       <a href="https://www.tiktok.com/@prefscuritiba">
-            <i class="fa-brands fa-tiktok fa-2x"></i>   
-          </a>
-        </div>
-
-    <div>
-      <img 
-        src="img/fim.png" 
-        alt="Zoo Curitiba"
-      />
-    </div>
-
-    <p>Copyright 2023 | Zoológico Curitiba - Todos os direitos reservados.</p>
-  </footer>
 
 
   <script src="script.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- FIM GOOGLE FONTES -->
+    <!-- BOOTSTRAP ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- FIM BOOTSTRAP ICONS -->
+    <link rel="stylesheet" href="style_eve.css">
+
+    <script src="menu.js" defer></script>
+
+    <title>ZOO</title>
+</head>
+<body>
+    
+    <header>
+    </header>
+
+    <main>
+        <section class="topo-do-site">
+            <div class="interface">
+                <div class="flex">
+                    <div class="txt-topo-site">
+                        <h1>Vamos conhecer melhor nosso ZOO<span>.</span></h1>
+                        <p>Aqui nós iremos fornecer informações sobre alguns experiencias que o nosso zoológico proporciona. Caso tenha interesse em turistar por Curitiba clique no botão abaixo 🛺</p>
+                        <div class="btn-contato">
+                        <a href="https://turismo.curitiba.pr.gov.br/categoria/atrativos-turisticos/3">
+                        <button>Turistar</button>
+                        </a>
+</div>
+
+                    </div><!--txt-topo-site-->
+
+                    <div class="img-topo-site">
+                        <img src="img/final.png" alt="">
+                    </div><!--img-topo-site-->
+                </div><!--flex-->
+            </div><!--interface-->
+        </section><!--topo-do-site-->
+
+        <section class="especiliadades">
+            <div class="interface">
+                <h2 class="titulo">Algumas    <span>Curiosidades.</span></h2>
+                
+                
+                
+                
+                <div class="flex">
+                    <div class="especialidades-box">
+                    <i class="bi bi-emoji-smile-fill"></i>
+                        <h3>Cartilha Infantil</h3>
+                        <p>A apresentação é feita pelo Blu, arara-azul-grande, que nasceu ali e que conhece bem tudo daquele espaço e seus moradores. Ele até dá umas dicas de como se comportar durante uma visita aos recintos. Boa leitura! </p>
+                        <a href="https://drive.google.com/file/d/1SfNwyRb8In4rcaEeP9Be5HyHBub7oV5p/view?usp=sharing">Ver </a>
+                    </div><!--especialidades-box-->
+
+                    <div class="especialidades-box">
+                    <i class="bi bi-globe-americas"></i>
+                        <h3>Espécies ameaçadas</h3>
+                        <p>O Zoológico de Curitiba, membro da AZAB, mantém ativamente dez espécies ameaçadas em colaboração com a ICMBio e o Ministério do Meio Ambiente. O foco é a conservação dessas espécies em risco.</p>
+                        <a href="https://www.azab.org.br/more/16/comite-de-bem-estar-animal">Ver </a>
+                    </div><!--especialidades-box-->
+
+                    <div class="especialidades-box">
+                    <i class="bi bi-trophy-fill"></i>
+                        <h3>Prêmios </h3>
+                        <p>Em 2018, o Zoo administrado pelo Departamento de Proteção e Conservação da Fauna , recebeu o Certificado de Excelência e em 2020 o prêmio Travellers Choice do site internacional de viagens TripAdvisor.</p>
+                        <a href="https://turismo.curitiba.pr.gov.br/conteudo/destaques-e-premios/1763">Ver </a>              
+                  
+                    </div><!--especialidades-box-->
+                </div><!--flex-->
+            </div><!--interface-->
+        </section><!--especiliadades-->
+
+        <section class="sobre">
+            <div class="interface">
+                <div class="flex">
+                    <div class="img-sobre">
+                        <img src="" alt="">
+                    </div><!--img-sobre-->
+
+                    <div class="txt-sobre">
+                    <h2>VAMOS FAZER UM TOUR DE DRONE PELO<span>ZOO?</span></h2>
+                        <p>Clique no botão abaixo</p>
+                        <div class="btn-social"> 
+                            <a href="https://youtu.be/bTmggTc4DcM?si=12EZzR6k2q0LqE88"><button><i class="bi bi-youtube"></i></button></a>
+                            
+                        </div><!--btn-social-->
+                    </div><!--txt-sobre-->
+                
+                    <div class="txt-sobre">
+                    <h2>DIVIRTA-SE COM O NOSSO GAME DA<span>  MEMÓRIA!!😉.</span></h2>
+                        <p>Clique no botão abaixo</p>
+                        <div class="btn-social"> 
+                            <a href="game/index.html"><button><i class="bi bi-controller"></i></button></a>
+                            
+                        </div><!--btn-social-->
+                    </div><!--txt-sobre-->
+                
+                
+                
+                </div><!--flex-->
+            </div><!--interface-->
+        </section><!--sobre-->
+
+        <section class="portfolio">
+            <div class="interface">
+                <h2 class="titulo">NOSSOS  TRABALHOS <span>  EDUCACIONAIS.</span></h2>
+                <div class="flex">
+                    
+                <a href="https://mid.curitiba.pr.gov.br/2021/00322643.pdf" class="img-port" style="background-image: url(img/1.jpg);">
+                 <div class="overlay">Acantonamento Ecológico</div>
+                    </a>
+
+        
+                    
+                    <a href="https://mid.curitiba.pr.gov.br/2021/00322603.pdf" class="img-port" style="background-image: url(img/2.jpg);">
+                    <div class="overlay">Centro de Educação Ambiental</div>
+                    </a>
+
+                    <a href="https://mid.curitiba.pr.gov.br/2021/00322604.pdf" class="img-port" style="background-image: url(img/3.jpg);">
+                     <div class="overlay">Oficina ambiental </div>
+                    </a>
+
+                    <a href="https://mid.curitiba.pr.gov.br/2021/00322606.pdf" class="img-port" style="background-image: url(img/4.jpg);">
+                      <div class="overlay">Zooterapia </div>
+                    </a>
+
+                    <a href="https://mid.curitiba.pr.gov.br/2021/00322605.pdf" class="img-port" style="background-image: url(img/5.jpg);">
+                     <div class="overlay">Visitas educativas</div>
+                    </a>
+
+</div>
+                </div><!--flex-->
+            </div><!--interface-->
+        </section><!--portfolio-->
+
+
+  
+
+
+
+        
+
+        
+
+
+
+
+
+       
+        <div class="services">
+    <h2 class="titulo"> Venha nos <span>Conhecer.</span></h2>
+    <p id="cphMasterPortal_pEndereco">
+		<a id="cphMasterPortal_hlkEnderecoGoogle" class="linkExterno" href="https://www.google.com/maps/search/?api=1&amp;query=R.+JO%c3%83O+MIQUELETTO%2c+1500+Alto+Boqueir%c3%a3o%2c+Curitiba+-+PR">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7198.778953686178!2d-49.2343419!3d-25.55870595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dcf98f2f7c9d91%3A0x2918348a71cd9422!2sRua%20Jo%C3%A3o%20Miqueletto%2C%201500%20-%20Alto%20Boqueir%C3%A3o%2C%20Curitiba%20-%20PR%2C%2081860-270!5e0!3m2!1spt-BR!2sbr!4v1695338070997!5m2!1spt-BR!2sbr"  width="1000" height="500" style="border:0;" _blank>Abrir no Google Maps<span class="icon-linkDireto"></span></a> allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+					</p>
+					
+            </div>
+       
+
+       
+
+    </main>
+
+
+    
+    <footer>
+        <div class="interface">
+            <div class="line-footer">
+                <div class="flex">
+                    <div class="logo-footer">
+                    <h2 class="titulo"> Volte <span> Sempre.</span></h2>  
+                    </div><!--logo-footer-->
+                    <div class="btn-social">
+                        <a href="https://instagram.com/zoocuritiba?igshid=MWZjMTM2ODFkZg"><button><i class="bi bi-instagram"></i></button></a>
+                        <a href="https://www.facebook.com/PrefsCuritiba/"><button><i class="bi bi-facebook"></i></button></a>
+                       
+                    </div><!--btn-social-->
+                </div>
+            </div><!--line-footer-->
+
+            <div class="line-footer borda">
+                <p><i class="bi bi-envelope-fill"></i> <a href="mailto:zoocuritiba3@gmail.com">zoocuritiba3@gmail.com</a></p>
+            </div><!--line-footer-->
+        </div><!--interface-->
+    </footer>
+
+
+
 </body>
 </html>

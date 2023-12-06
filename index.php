@@ -1,3 +1,27 @@
+<?php
+session_start();
+
+require_once('classes/Usuario.php');
+require_once('database/conexao.php');
+
+$database = new Conexao();
+$db = $database->getConnection();
+$usuario = new Usuario($db);
+
+if(isset($_POST['email']) && isset($_POST['senha'])){
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+
+    if ($usuario->logar($email, $senha)) {
+        $_SESSION['email'] = $email;
+        header("Location: site.php");
+        exit();
+    } else {
+        echo "<script>alert('Login inválido');</script>";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,7 +29,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <title>Zoo Cwb</title>
+    
+    <title>Tela de Login</title>
 
     <style>
       * {
@@ -108,21 +133,21 @@ form input[type=submit] {
     </style>
 </head>
 <body>
-    <section class="form-container">
+<section class="form-container">
         <div class="container">
-            <form method="POST" action="site.php">
+            <form method="POST" action="">
                 <h1>Acesse nosso site animal</h1>
                 <p>Login</p>
                 <div class="input-single">
-                    <input class="input" type="text" id="usuario" required>
-                    <label for="usuario">Seu nome de Usuario</label>
+                    <input class="input" type="email" name="email" id="usuario" required>
+                    <label for="usuario">Seu endereço de e-mail</label>
                 </div>
                 <div class="input-single">
-                    <input class="input" type="password" id="senha" required>
+                    <input class="input" type="password" name="senha" id="senha" required>
                     <label for="senha">Sua Senha</label>
                 </div>
               
-                <div class="btn"><input type="submit" value="Logar"></div>
+                <div class="btn"><input type="submit" name="logar" value="Logar"></div>
             </form>
             <a href="cadastrar.php"> Clique aqui para criar uma conta </a>
         </div>
